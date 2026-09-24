@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cigares Casa Hurtado — Cigares du Nicaragua, directement de l’origine</title>
+<meta name="description" content="Cigares premium roulés à la main à Estelí, Nicaragua. Quatre lignes — Connecticut, Habano, Sumatra, Maduro Natural — en exclusivité en Suisse. Livraison dans toute la Suisse.">
+<meta name="theme-color" content="#0c0907">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cigares Casa Hurtado — Cigares du Nicaragua">
+<meta property="og:description" content="Roulés à la main à Estelí, Nicaragua. En exclusivité en Suisse.">
+<meta property="og:image" content="https://welcometothenextlevel.github.io/cigarecasahurtado/img/og.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="preload" as="image" href="img/scorpion.png">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Cigares Casa Hurtado",
+  "legalName": "Rhums & Cigares Hurtado Mercado Carlos",
+  "founder": { "@type": "Person", "name": "Carlos Hurtado" },
+  "description": "Cigares premium roulés à la main à Estelí, Nicaragua. En exclusivité en Suisse.",
+  "telephone": "+41 78 778 62 63",
+  "email": "info@rhums-cigares.ch",
+  "url": "https://rhums-cigares.ch",
+  "address": { "@type": "PostalAddress", "streetAddress": "Avenue de Florissant 32", "postalCode": "1020", "addressLocality": "Renens", "addressRegion": "VD", "addressCountry": "CH" },
+  "priceRange": "CHF 15 – CHF 490",
+  "currenciesAccepted": "CHF",
+  "paymentAccepted": "Credit card, TWINT, Bank transfer"
+}
+</script>
+</head>
+<body class="is-loading">
+
+<!-- Age gate: the humidor lid -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate__lid">
+    <div class="gate__wood" aria-hidden="true"></div>
+    <div class="gate__inlay" aria-hidden="true"></div>
+    <div class="gate__inner">
+      <img class="gate__logo" src="img/logo.webp" alt="Cigares Casa Hurtado" width="260" height="226">
+      <p class="eyebrow eyebrow--center" data-i18n="gate.eyebrow">Cigares Casa Hurtado</p>
+      <h1 class="gate__title" id="gate-title" data-i18n="gate.title">Avez-vous <em>18 ans</em> ou plus ?</h1>
+      <p class="gate__text" data-i18n="gate.text">Les cigares sont des produits de plaisir destinés aux adultes. L’accès à ce site est réservé aux personnes majeures.</p>
+      <div class="gate__actions">
+        <button class="btn btn--gold" id="gate-yes" type="button"><span data-i18n="gate.yes">Oui, j’ai 18 ans</span></button>
+        <button class="btn btn--ghost" id="gate-no" type="button"><span data-i18n="gate.no">Non</span></button>
+      </div>
+      <p class="gate__denied" id="gate-denied" hidden data-i18n="gate.denied">Nous sommes désolés — ce site est réservé aux personnes de 18 ans et plus.</p>
+      <div class="lang lang--gate" role="group" aria-label="Langue / Sprache">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+    </div>
+    <div class="gate__hinge" aria-hidden="true"></div>
+  </div>
+  <div class="gate__glow" aria-hidden="true"></div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Cigares Casa Hurtado — accueil">
+    <img src="img/logo.webp" alt="" width="44" height="38">
+    <span>Casa Hurtado<small>Cigares du Nicaragua</small></span>
+  </a>
+  <nav class="nav__links" aria-label="Navigation principale">
+    <a href="#lines" data-i18n="nav.lines">Les lignes</a>
+    <a href="#shop" data-i18n="nav.shop">Vitoles & prix</a>
+    <a href="#craft" data-i18n="nav.craft">Manufacture</a>
+    <a href="#carlos" data-i18n="nav.carlos">Carlos Hurtado</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="nav__end">
+    <div class="lang" role="group" aria-label="Langue / Sprache">
+      <button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="de" aria-pressed="false">DE</button>
+    </div>
+    <a class="btn btn--gold btn--sm nav__cta" href="#shop"><span data-i18n="nav.cta">Boutique</span></a>
+    <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menu mobile">
+    <a href="#lines"><i>01</i><span data-i18n="nav.lines">Les lignes</span></a>
+    <a href="#shop"><i>02</i><span data-i18n="nav.shop">Vitoles & prix</span></a>
+    <a href="#craft"><i>03</i><span data-i18n="nav.craft">Manufacture</span></a>
+    <a href="#carlos"><i>04</i><span data-i18n="nav.carlos">Carlos Hurtado</span></a>
+    <a href="#contact"><i>05</i><span data-i18n="nav.contact">Contact</span></a>
+  </nav>
+  <div class="menu__foot">
+    <a href="tel:+41787786263">+41 78 778 62 63</a>
+    <a href="mailto:info@rhums-cigares.ch">info@rhums-cigares.ch</a>
+  </div>
+</div>
+
+<div class="backdrop" aria-hidden="true"><div class="backdrop__moods" id="line-moods"></div><div class="backdrop__glow" id="ana-glow"></div></div>
+<canvas class="stage" id="stage" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <picture><source srcset="img/hero-landscape.webp" type="image/webp"><img src="img/hero-landscape.jpg" alt="" width="1800" height="775"></picture>
+    </div>
+    <video class="hero__smoke" src="video/smoke.mp4" muted loop playsinline preload="auto" aria-hidden="true"></video>
+    <div class="hero__fallback" aria-hidden="true"><img src="img/box-maduro.webp" alt=""></div>
+    <div class="hero__inner wrap">
+      <p class="eyebrow hero__eyebrow" data-i18n="hero.eyebrow">Estelí, Nicaragua <span>—</span> Renens, Suisse</p>
+      <h1 class="hero__title display" data-split data-i18n="hero.title">Cigares du Nicaragua.<br><em>Directement de l’origine.</em></h1>
+      <p class="hero__text" data-i18n="hero.text">De la graine au cigare super premium, tout est fait à la main, selon les méthodes traditionnelles, sur nos propres fincas. En exclusivité en Suisse.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--gold magnetic" href="#lines"><span data-i18n="hero.cta1">Découvrir les quatre lignes</span></a>
+        <a class="btn btn--line magnetic" href="#shop"><span data-i18n="hero.cta2">Voir les prix</span></a>
+      </div>
+    </div>
+    <div class="hero__foot wrap">
+      <dl class="hero__stats">
+        <div><dt>4</dt><dd data-i18n="hero.s1">lignes</dd></div>
+        <div><dt>7</dt><dd data-i18n="hero.s2">vitoles par ligne</dd></div>
+        <div><dt>20</dt><dd data-i18n="hero.s3">cigares par coffret</dd></div>
+      </dl>
+      <a class="hero__scroll" href="#manifesto"><span data-i18n="hero.scroll">Faire défiler</span><i aria-hidden="true"><b></b></i></a>
+    </div>
+  </section>
+
+  <!-- MARQUEE as a cigar band -->
+  <div class="band-strip" aria-hidden="true"><div class="band-strip__track" id="marquee"></div></div>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="manifesto">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="man.eyebrow">Casa Hurtado — le Nicaragua à l’état pur</p>
+      <p class="manifesto__text" id="manifesto-text" data-i18n="man.text">Casa Hurtado, c’est la véritable tradition nicaraguayenne du cigare : l’artisanat, la patience et l’exigence de la plus haute qualité. Chaque feuille est choisie avec soin, fermentée naturellement, puis roulée par des torcedores expérimentés en un cigare parfaitement équilibré.</p>
+      <blockquote class="manifesto__quote" data-reveal><p data-i18n="man.quote">Notre philosophie est simple : créer des cigares dont les arômes s’intensifient et se déploient de la première à la dernière bouffée.</p></blockquote>
+      <ol class="pillars">
+        <li data-reveal><span class="pillars__n">I</span><h3 data-i18n="p1.t">Fincas propres & graines cubaines</h3><p data-i18n="p1.d">Nos cigares naissent sur nos propres fincas au Nicaragua, contrôlés de la graine au cigare fini. Des graines sélectionnées, cultivées dans des conditions climatiques idéales.</p></li>
+        <li data-reveal><span class="pillars__n">II</span><h3 data-i18n="p2.t">Savoir-faire artisanal</h3><p data-i18n="p2.d">Chaque cigare est roulé à la main par des torcedores expérimentés. Un savoir transmis de génération en génération : construction parfaite, combustion régulière.</p></li>
+        <li data-reveal><span class="pillars__n">III</span><h3 data-i18n="p3.t">Un goût qui évolue</h3><p data-i18n="p3.d">Nos assemblages sont composés pour que les arômes se déploient tout au long de la dégustation, avec une intensité et une profondeur croissantes jusqu’au final.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- THE FOUR LINES (pinned, the 3D cigar changes line) -->
+  <section class="lines" id="lines">
+    <div class="lines__pin">
+      <div class="lines__head wrap">
+        <p class="eyebrow" data-i18n="col.eyebrow">La collection</p>
+        <h2 class="display display--m" data-i18n="col.title">Quatre lignes.<br><em>Quatre moments.</em></h2>
+      </div>
+      <div class="lines__panel" id="line-panel" aria-live="polite"></div>
+      <div class="lines__nav wrap" id="line-nav"></div>
+    </div>
+  </section>
+
+  <!-- ANATOMY (pinned, the cigar comes apart) -->
+  <section class="anatomy" id="anatomy">
+    <div class="anatomy__pin">
+      <div class="anatomy__head wrap">
+        <p class="eyebrow" data-i18n="ana.eyebrow">Anatomie</p>
+        <h2 class="display display--m" data-i18n="ana.title">Trois feuilles.<br><em>Une seule main.</em></h2>
+        <p class="anatomy__text" data-i18n="ana.text">Un cigare Casa Hurtado se compose de trois étages de tabac, assemblés et roulés à la main par un torcedor.</p>
+      </div>
+      <div class="callouts" id="callouts">
+        <div class="callout" data-anchor="wrapper" data-side="up"><i></i><div><h4 data-i18n="ana.wrapper">Cape</h4><p data-i18n="ana.wrapper.d">La feuille extérieure, choisie pour sa beauté.</p></div></div>
+        <div class="callout" data-anchor="binder" data-side="right"><i></i><div><h4 data-i18n="ana.binder">Sous-cape</h4><p data-i18n="ana.binder.d">Elle maintient la tripe et garantit une combustion régulière.</p></div></div>
+        <div class="callout" data-anchor="filler" data-side="down"><i></i><div><h4 data-i18n="ana.filler">Tripe</h4><p data-i18n="ana.filler.d">Le cœur du cigare.</p></div></div>
+      </div>
+      <div class="origins wrap" id="origins"></div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <div class="shop__head">
+        <div>
+          <p class="eyebrow" data-i18n="shop.eyebrow">Vitoles & prix</p>
+          <h2 class="display display--m" data-split data-i18n="shop.title">Sept formats.<br><em>Un seul standard.</em></h2>
+        </div>
+        <p class="shop__intro" data-i18n="shop.text">Chaque ligne existe en sept vitoles, à la pièce ou en coffret de 20. Prix en CHF, TVA incluse.</p>
+      </div>
+      <div class="shop__controls">
+        <div class="tabs" id="shop-tabs" role="tablist" aria-label="Lignes"></div>
+        <div class="qty" role="group" aria-label="Quantité">
+          <button type="button" data-qty="single" aria-pressed="true" data-i18n="shop.single">À la pièce</button>
+          <button type="button" data-qty="box" aria-pressed="false" data-i18n="shop.box">Coffret de 20</button>
+          <i aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="shop__line" id="shop-line"></div>
+    </div>
+    <div class="tray" id="tray" role="tabpanel"></div>
+    <div class="wrap shop__foot">
+      <p data-i18n="shop.note">Commande et paiement sécurisés sur la boutique officielle rhums-cigares.ch</p>
+      <a class="btn btn--line" id="shop-all" href="https://rhums-cigares.ch/fr/shop/" target="_blank" rel="noopener"><span data-i18n="shop.all">Toute la boutique</span></a>
+    </div>
+  </section>
+
+  <!-- CRAFT (horizontal) -->
+  <section class="craft" id="craft">
+    <div class="craft__pin">
+      <div class="craft__track" id="craft-track">
+        <article class="craft__intro">
+          <p class="eyebrow" data-i18n="craft.eyebrow">La manufacture</p>
+          <h2 class="display display--l" data-i18n="craft.title">Estelí, <em>capitale mondiale</em> du tabac.</h2>
+          <p class="craft__lead" data-i18n="craft.text">Au cœur d’Estelí, entourés de sols volcaniques fertiles et d’un climat idéal, naissent les cigares Casa Hurtado.</p>
+          <div class="craft__hint" aria-hidden="true"><span></span></div>
+        </article>
+        <article class="step">
+          <figure class="step__img step__img--wide"><picture><source srcset="img/mogoton.webp" type="image/webp"><img src="img/mogoton.jpg" alt="Paysage volcanique du Nicaragua" loading="lazy" width="1800" height="1200"></picture></figure>
+          <div class="step__txt"><span class="step__n">01</span><h3 data-i18n="craft.s1.t">La finca</h3><p data-i18n="craft.s1.d">Le tabac pousse exclusivement sur nos propres fincas.</p></div>
+        </article>
+        <article class="step step--alt">
+          <figure class="step__img"><picture><source srcset="img/f/f22.webp" type="image/webp"><img src="img/f/f22.jpg" alt="Feuilles de tabac fermentées à la manufacture Casa Hurtado" loading="lazy" width="1000" height="1500"></picture></figure>
+          <figure class="step__img step__img--small"><picture><source srcset="img/f/f18.webp" type="image/webp"><img src="img/f/f18.jpg" alt="Préparation d’une feuille de cape" loading="lazy" width="1000" height="1500"></picture></figure>
+          <div class="step__txt"><span class="step__n">02</span><h3 data-i18n="craft.s2.t">La fermentation</h3><p data-i18n="craft.s2.d">Après la récolte, les feuilles traversent une fermentation naturelle.</p></div>
+        </article>
+        <article class="step">
+          <figure class="step__img"><picture><source srcset="img/f/f11.webp" type="image/webp"><img src="img/f/f11.jpg" alt="Un torcedor roule un cigare Casa Hurtado à la main" loading="lazy" width="1000" height="1500"></picture></figure>
+          <figure class="step__img step__img--small step__img--up"><picture><source srcset="img/f/f19.webp" type="image/webp"><img src="img/f/f19.jpg" alt="Une torcedora au travail à Estelí" loading="lazy" width="1000" height="1500"></picture></figure>
+          <div class="step__txt"><span class="step__n">03</span><h3 data-i18n="craft.s3.t">Les torcedores</h3><p data-i18n="craft.s3.d">Chaque cigare est façonné à la main.</p></div>
+        </article>
+        <article class="step step--alt">
+          <figure class="step__img step__img--wide"><picture><source srcset="img/f/f5.webp" type="image/webp"><img src="img/f/f5.jpg" alt="Contrôle de qualité dans l’atelier de roulage, Estelí" loading="lazy" width="1500" height="1001"></picture></figure>
+          <figure class="step__img step__img--small"><picture><source srcset="img/f/f8.webp" type="image/webp"><img src="img/f/f8.jpg" alt="Contrôle d’une série de cigares fraîchement roulés" loading="lazy" width="1000" height="1500"></picture></figure>
+          <div class="step__txt"><span class="step__n">04</span><h3 data-i18n="craft.s4.t">Le contrôle</h3><p data-i18n="craft.s4.d">Une équipe expérimentée veille à la qualité.</p></div>
+        </article>
+        <article class="craft__team">
+          <figure><picture><source srcset="img/f/f4.webp" type="image/webp"><img src="img/f/f4.jpg" alt="L’équipe de la manufacture Casa Hurtado à Estelí" loading="lazy" width="1500" height="1001"></picture></figure>
+          <p class="craft__place">Estelí · Nicaragua <span>13°05′N 86°21′W</span></p>
+        </article>
+      </div>
+      <div class="craft__progress" aria-hidden="true"><i id="craft-bar"></i></div>
+    </div>
+  </section>
+
+  <!-- CARLOS -->
+  <section class="carlos" id="carlos">
+    <div class="wrap carlos__grid">
+      <figure class="carlos__img" data-parallax>
+        <picture><source srcset="img/carlos.webp" type="image/webp"><img src="img/carlos.jpg" alt="Carlos Hurtado tenant des feuilles de tabac dans sa finca" loading="lazy" width="989" height="1400"></picture>
+        <figcaption>Carlos Hurtado</figcaption>
+      </figure>
+      <div class="carlos__txt">
+        <p class="eyebrow" data-i18n="carlos.eyebrow">Le fondateur</p>
+        <h2 class="display display--m" data-split data-i18n="carlos.title">La vision de<br><em>Carlos Hurtado.</em></h2>
+        <p data-reveal data-i18n="carlos.p1">Derrière Casa Hurtado se trouve Carlos Hurtado, fondateur et force motrice de la marque.</p>
+        <p class="carlos__big" data-reveal data-i18n="carlos.p2">Sa vision : un cigare non seulement parfait sur le plan artisanal, mais qui offre aussi une expérience sensorielle inimitable.</p>
+        <h3 data-reveal data-i18n="carlos.h">Un vrai morceau de Nicaragua.</h3>
+        <p data-reveal data-i18n="carlos.p3">Chaque cigare Casa Hurtado est plus qu’un produit.</p>
+        <div class="carlos__sig" data-reveal><span>Carlos Hurtado</span><small data-i18n="carlos.sig">Fondateur, Cigares Casa Hurtado</small></div>
+      </div>
+      <div class="carlos__strip" aria-hidden="true">
+        <picture><source srcset="img/f/f7.webp" type="image/webp"><img src="img/f/f7.jpg" alt="" loading="lazy" width="1000" height="1500"></picture>
+        <picture><source srcset="img/f/f9.webp" type="image/webp"><img src="img/f/f9.jpg" alt="" loading="lazy" width="1500" height="1001"></picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section class="ritual" id="ritual">
+    <video class="ritual__video" src="video/flame.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="ritual__veil" aria-hidden="true"></div>
+    <div class="wrap ritual__inner">
+      <p class="eyebrow" data-i18n="rit.eyebrow">Le rituel</p>
+      <h2 class="display display--m" data-split data-i18n="rit.title">Un cigare pour <em>chaque heure</em> du jour.</h2>
+      <div class="dial" id="dial">
+        <svg class="dial__arc" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+          <path id="arc-path" d="M20 290 C 250 -10, 750 -10, 980 290" fill="none" stroke="rgba(201,164,92,.25)" stroke-width="1.5" stroke-dasharray="3 7"/>
+          <path id="arc-done" d="M20 290 C 250 -10, 750 -10, 980 290" fill="none" stroke="#c9a45c" stroke-width="1.5"/>
+        </svg>
+        <div class="dial__sun" id="sun" aria-hidden="true"></div>
+        <ol class="dial__stops" id="dial-stops"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT -->
+  <section class="gift" id="gift">
+    <div class="wrap gift__grid">
+      <div class="gift__boxes" id="gift-boxes" aria-hidden="true">
+        <img src="img/box-maduro.webp" alt="" loading="lazy" style="--i:0">
+        <img src="img/box-sumatra.webp" alt="" loading="lazy" style="--i:1">
+        <img src="img/box-habano.webp" alt="" loading="lazy" style="--i:2">
+        <img src="img/box-connecticut.webp" alt="" loading="lazy" style="--i:3">
+      </div>
+      <div class="gift__txt">
+        <p class="eyebrow" data-i18n="gift.eyebrow">Offrir</p>
+        <h2 class="display display--l" data-split data-i18n="gift.title">Offrez du <em>plaisir.</em></h2>
+        <p data-reveal data-i18n="gift.text">Avec l’un de nos cigares, vous faites plaisir à tous les amateurs. Chaque vitole existe en coffret de 20 cigares.</p>
+        <p class="gift__price" data-reveal><span data-i18n="gift.from">Coffrets dès</span> <strong>CHF 300.00</strong></p>
+        <a class="btn btn--gold magnetic" href="#shop" id="gift-cta" data-reveal><span data-i18n="gift.cta">Choisir un coffret</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE -->
+  <section class="service" aria-label="Service">
+    <div class="wrap service__grid">
+      <div data-reveal>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 14h24v20H4zM28 20h9l7 7v7H28z"/><circle cx="12" cy="36" r="4"/><circle cx="36" cy="36" r="4"/></svg>
+        <h3 data-i18n="svc.1.t">Livraison dans toute la Suisse</h3><p data-i18n="svc.1.d">Standard CHF 9.00 · Express CHF 20.00.</p>
+      </div>
+      <div data-reveal>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="11" width="38" height="26" rx="3"/><path d="M5 19h38M11 30h10"/></svg>
+        <h3 data-i18n="svc.2.t">Paiement</h3><p data-i18n="svc.2.d">Cartes de crédit, TWINT ou virement bancaire (prépaiement).</p>
+      </div>
+      <div data-reveal>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="16" width="36" height="24" rx="2"/><path d="M6 16l4-8h28l4 8M20 28h8"/></svg>
+        <h3 data-i18n="svc.3.t">Conservation optimale</h3><p data-i18n="svc.3.d">Stockés dans des conditions climatiques optimales.</p>
+      </div>
+      <div data-reveal>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><text x="24" y="29" text-anchor="middle" font-size="13" font-family="Mulish" font-weight="700" fill="currentColor" stroke="none">18+</text></svg>
+        <h3 data-i18n="svc.4.t">Réservé aux 18 ans et plus</h3><p data-i18n="svc.4.d">La vente de produits du tabac est réservée aux personnes majeures.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <video class="contact__wisp" src="video/wisp.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="wrap contact__grid">
+      <div>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+        <h2 class="display display--l" data-split data-i18n="contact.title">Parlons <em>cigares.</em></h2>
+        <p class="contact__lead" data-reveal data-i18n="contact.text">Une question sur une ligne, une commande pour un événement ou un cadeau ? Carlos vous répond personnellement.</p>
+        <dl class="contact__list">
+          <div data-reveal><dt data-i18n="contact.phone">Téléphone</dt><dd><a href="tel:+41787786263">+41 78 778 62 63</a></dd></div>
+          <div data-reveal><dt data-i18n="contact.mail">E-mail</dt><dd><a href="mailto:info@rhums-cigares.ch">info@rhums-cigares.ch</a></dd></div>
+          <div data-reveal><dt data-i18n="contact.addr">Adresse</dt><dd>Cigares Casa Hurtado<br>Carlos Hurtado<br>Avenue de Florissant 32<br>1020 Renens VD</dd></div>
+        </dl>
+        <a class="btn btn--line" data-reveal href="https://www.google.com/maps/dir/?api=1&destination=Avenue+de+Florissant+32,+1020+Renens" target="_blank" rel="noopener"><span data-i18n="contact.route">Itinéraire</span></a>
+      </div>
+      <form class="form" id="contact-form" novalidate data-reveal>
+        <label><span data-i18n="form.name">Nom</span><input name="name" autocomplete="name" required></label>
+        <label><span data-i18n="form.email">E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span data-i18n="form.msg">Votre message</span><textarea name="msg" rows="5" required></textarea></label>
+        <button class="btn btn--gold magnetic" type="submit"><span data-i18n="form.send">Envoyer le message</span></button>
+        <p class="form__hint" data-i18n="form.hint">Ouvre votre messagerie avec le message prêt à partir.</p>
+      </form>
+    </div>
+    <div class="map wrap" data-reveal>
+      <iframe title="Carte — Avenue de Florissant 32, 1020 Renens" src="https://www.google.com/maps?q=Avenue+de+Florissant+32,+1020+Renens,+Suisse&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <img src="img/logo.webp" alt="" width="84" height="73" loading="lazy">
+        <p data-i18n="foot.tag">Cigares du Nicaragua. En exclusivité en Suisse.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.lines">Les lignes</h4>
+        <ul class="foot__lines" id="foot-lines"></ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.house">La maison</h4>
+        <ul>
+          <li><a href="#craft" data-i18n="nav.craft">Manufacture</a></li>
+          <li><a href="#carlos" data-i18n="nav.carlos">Carlos Hurtado</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="tel:+41787786263">+41 78 778 62 63</a></li>
+          <li><a href="mailto:info@rhums-cigares.ch">info@rhums-cigares.ch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.legal">Informations légales</h4>
+        <ul>
+          <li><a data-legal="allgemeine-geschaeftsbedingungen" href="https://rhums-cigares.ch/fr/allgemeine-geschaeftsbedingungen/" target="_blank" rel="noopener" data-i18n="foot.cgv">Conditions générales</a></li>
+          <li><a data-legal="impressum" href="https://rhums-cigares.ch/fr/impressum/" target="_blank" rel="noopener" data-i18n="foot.imp">Mentions légales</a></li>
+          <li><a data-legal="datenschutzerklaerung" href="https://rhums-cigares.ch/fr/datenschutzerklaerung/" target="_blank" rel="noopener" data-i18n="foot.privacy">Protection des données</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot__word" aria-hidden="true">Casa Hurtado</p>
+    <div class="foot__legal">
+      <p data-i18n="foot.warn">Vente réservée aux personnes de 18 ans et plus. Fumer nuit gravement à votre santé et à celle de votre entourage.</p>
+      <p><span data-i18n="foot.entity">Rhums & Cigares Hurtado Mercado Carlos · Entreprise individuelle · Renens VD</span> · © <span id="year">2026</span> Cigares Casa Hurtado</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cursor" aria-hidden="true"><i></i></div>
+
+<script type="module" src="js/main.js?v=6"></script>
+</body>
+</html>
