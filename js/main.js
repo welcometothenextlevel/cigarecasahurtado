@@ -217,7 +217,7 @@ function webglOK() {
   const libs = await whenLibs();
   if (webglOK()) {
     try {
-      const { createScene } = await import('./scene.js?v=7');
+      const { createScene } = await import('./scene.js?v=8');
       sceneApi = await createScene($('#stage'), { mobile: mq.matches });
     } catch (e) { console.warn('3D disabled', e); root.classList.add('no-webgl'); }
   } else root.classList.add('no-webgl');
@@ -495,9 +495,39 @@ function setupUI() {
     });
   }
 
+  // dark Leaflet map, loaded only when the contact section comes near
+  const mapEl = $('#map');
+  const mio = new IntersectionObserver(es => { if (es[0].isIntersecting) { mio.disconnect(); loadMap(mapEl); } }, { rootMargin: '600px' });
+  mapEl && mio.observe(mapEl);
+
   mq.addEventListener('change', () => window.ScrollTrigger && ScrollTrigger.refresh());
 }
 function closeMenu() {
   const burger = $('#burger'); if (burger.getAttribute('aria-expanded') !== 'true') return;
   burger.setAttribute('aria-expanded', 'false'); $('#menu').hidden = true; lenis && lenis.start();
+}
+
+/* ---------------- map ---------------- */
+const SHOP_LATLNG = [46.53222, 6.59817]; // Avenue de Florissant 32, 1020 Renens (swisstopo + OSM agree)
+function loadMap(el) {
+  const css = document.createElement('link');
+  css.rel = 'stylesheet'; css.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+  document.head.appendChild(css);
+  const js = document.createElement('script');
+  js.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+  js.onload = () => {
+    const touch = matchMedia('(pointer: coarse)').matches;
+    const map = L.map(el, { center: SHOP_LATLNG, zoom: 16, maxZoom: 18, scrollWheelZoom: false, dragging: !touch, tap: false, attributionControl: true, zoomControl: true });
+    const esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+    L.tileLayer(esri + 'World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom: 16, maxZoom: 18, attribution: 'Tiles &copy; Esri — Esri, HERE, Garmin, &copy; OpenStreetMap contributors' }).addTo(map);
+    L.tileLayer(esri + 'World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom: 16, maxZoom: 18 }).addTo(map);
+    const icon = L.divIcon({ className: 'pin', iconSize: [0, 0],
+      html: '<span class="pin__dot"></span><span class="pin__card">Cigares Casa Hurtado<small>Av. de Florissant 32 · Renens</small></span>' });
+    L.marker(SHOP_LATLNG, { icon, keyboard: false, title: 'Cigares Casa Hurtado' }).addTo(map)
+      .on('click', () => window.open('https://www.google.com/maps/dir/?api=1&destination=46.53222,6.59817', '_blank', 'noopener'));
+    // keep the pin clear of the card on narrow screens
+    if (innerWidth < 600) map.panBy([105, 0], { animate: false });
+  };
+  js.onerror = () => { el.innerHTML = '<a class="map__fallback" href="https://www.google.com/maps/dir/?api=1&destination=46.53222,6.59817" target="_blank" rel="noopener">Avenue de Florissant 32<br>1020 Renens VD →</a>'; };
+  document.head.appendChild(js);
 }
