@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 <link rel="preload" as="image" href="img/scorpion.png">
 <script type="importmap">
 { "imports": {
@@ -61,8 +61,8 @@
         <button class="btn btn--ghost" id="gate-no" type="button"><span data-i18n="gate.no">Non</span></button>
       </div>
       <p class="gate__denied" id="gate-denied" hidden data-i18n="gate.denied">Nous sommes désolés — ce site est réservé aux personnes de 18 ans et plus.</p>
-      <div class="lang lang--gate" role="group" aria-label="Langue / Sprache">
-        <button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="de" aria-pressed="false">DE</button>
+      <div class="lang lang--gate" role="group" aria-label="Langue / Sprache / Language / Idioma">
+        <button type="button" data-lang="fr" aria-pressed="true" lang="fr">FR</button><button type="button" data-lang="de" aria-pressed="false" lang="de">DE</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button><button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
       </div>
     </div>
     <div class="gate__hinge" aria-hidden="true"></div>
@@ -83,8 +83,8 @@
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="nav__end">
-    <div class="lang" role="group" aria-label="Langue / Sprache">
-      <button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="de" aria-pressed="false">DE</button>
+    <div class="lang" role="group" aria-label="Langue / Sprache / Language / Idioma">
+      <button type="button" data-lang="fr" aria-pressed="true" lang="fr">FR</button><button type="button" data-lang="de" aria-pressed="false" lang="de">DE</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button><button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
     </div>
     <a class="btn btn--gold btn--sm nav__cta" href="#shop"><span data-i18n="nav.cta">Boutique</span></a>
     <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
@@ -99,6 +99,9 @@
     <a href="#carlos"><i>04</i><span data-i18n="nav.carlos">Carlos Hurtado</span></a>
     <a href="#contact"><i>05</i><span data-i18n="nav.contact">Contact</span></a>
   </nav>
+  <div class="lang lang--menu" role="group" aria-label="Langue / Sprache / Language / Idioma">
+    <button type="button" data-lang="fr" aria-pressed="true" lang="fr">FR</button><button type="button" data-lang="de" aria-pressed="false" lang="de">DE</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button><button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
+  </div>
   <div class="menu__foot">
     <a href="tel:+41787786263">+41 78 778 62 63</a>
     <a href="mailto:info@rhums-cigares.ch">info@rhums-cigares.ch</a>
@@ -399,6 +402,6 @@
 
 <div class="cursor" aria-hidden="true"><i></i></div>
 
-<script type="module" src="js/main.js?v=6"></script>
+<script type="module" src="js/main.js?v=7"></script>
 </body>
 </html>

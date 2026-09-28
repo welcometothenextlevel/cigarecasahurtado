@@ -2,7 +2,7 @@
 
 Site vitrine pour Cigares Casa Hurtado (Carlos Hurtado, Renens VD) — cigares du Nicaragua, en exclusivité en Suisse.
 
-Static site, no build step. FR by default, DE switch in the header.
+Static site, no build step. French is the main language; DE, EN and ES are available from the switcher (header, age gate, mobile menu).
 
 - `index.html` — page structure
 - `css/style.css` — design

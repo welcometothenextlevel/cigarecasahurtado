@@ -12,7 +12,9 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
 };
 
-let lang = store.get('ch_lang') || ((navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'fr');
+// French is the main language; visitors switch to DE / EN / ES themselves
+const LANGS = ['fr', 'de', 'en', 'es'];
+let lang = LANGS.includes(store.get('ch_lang')) ? store.get('ch_lang') : 'fr';
 let qty = 'single';
 let shopLine = 0;
 let lineIdx = 0;
@@ -145,7 +147,7 @@ function applyLang(first = false) {
   $('meta[name="description"]').setAttribute('content', t('meta.desc'));
   $$('[data-i18n]').forEach(el => { const v = t(el.dataset.i18n); if (typeof v === 'string') el.innerHTML = v; });
   $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-  $('.nav__brand small').textContent = lang === 'de' ? 'Zigarren aus Nicaragua' : 'Cigares du Nicaragua';
+  $('.nav__brand small').textContent = t('nav.sub');
   $$('[data-legal]').forEach(a => { a.href = lang === 'de' ? `${SHOP}/${a.dataset.legal}/` : `${SHOP}/fr/${a.dataset.legal}/`; });
   $('#shop-all').href = lang === 'de' ? `${SHOP}/shop/` : `${SHOP}/fr/shop/`;
   buildMarquee(); buildLines(); buildOrigins(); buildShop(); buildRitual(); buildFootLines();
@@ -215,7 +217,7 @@ function webglOK() {
   const libs = await whenLibs();
   if (webglOK()) {
     try {
-      const { createScene } = await import('./scene.js?v=6');
+      const { createScene } = await import('./scene.js?v=7');
       sceneApi = await createScene($('#stage'), { mobile: mq.matches });
     } catch (e) { console.warn('3D disabled', e); root.classList.add('no-webgl'); }
   } else root.classList.add('no-webgl');
